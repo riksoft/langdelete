@@ -3,6 +3,7 @@
 *
 * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
 * @author     Taggic <taggic@t-online.de>
+* @revision   Rik <wm@riksoft.com>
 */
 
 Intro
@@ -14,3 +15,10 @@ Installation
 ------------
  Just download and extract it as folder “langdelete” into your “\lib\plugins” 
  directory.
+
+Revision
+------------
+This fork exists only because the original author doesn't pull new requests.
+At the moment the only different file is the main one: admin.php, so you can
+also install the plugin from dokuwiki itself and the overwrite manually only such
+file.
