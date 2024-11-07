@@ -1,5 +1,7 @@
 /** 
 *  DeleteLang Admin Plugin: allows deleting of unneccessary language files and folders
+*  For example, keeping only 2 languages it brings the total number of files from
+*  about 6860 files a 2980.
 *
 * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
 * @author     Taggic <taggic@t-online.de>
