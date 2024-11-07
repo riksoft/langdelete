@@ -291,6 +291,7 @@ class admin_plugin_langdelete extends DokuWiki_Admin_Plugin {
          * Cross out those not in $keep */
         $print_lang_li = function ($langs) use ($keep) {
             echo '<ul class="languages">';
+            $langs=(array)$langs;
             foreach ($langs as $val) {
                 // If $keep is null, we keep everything
                 $enabled = is_null($keep) || in_array ($val, $keep);
@@ -394,6 +395,7 @@ class admin_plugin_langdelete extends DokuWiki_Admin_Plugin {
      * Signature: ^Lang, Array => ^Lang */
     private function _filter_out_lang ($e, $lang_keep) {
         // Recursive function with cases being an array of arrays, or an array
+        $e=(array)$e;
         if (count ($e) > 0 && is_array (array_values($e)[0])) {
             foreach ($e as $k => $elt) {
                 $out[$k] = $this->_filter_out_lang ($elt, $lang_keep);
@@ -411,17 +413,32 @@ class admin_plugin_langdelete extends DokuWiki_Admin_Plugin {
      *
      * Signature: ^Lang => Array */
     private function lang_unique ($l) {
+		 $count=(array)$count;
+
         foreach ($l['core'] as $lang) {
-            $count[$lang]++;
+				if(array_key_exists($lang,$count)){
+					$count[$lang]++;
+				}else{
+					$count[$lang]=0;
+				}
         }
         foreach ($l['templates'] as $tpl => $arr) {
             foreach ($arr as $lang) {
-                $count[$lang]++;
+					if(array_key_exists($lang,$count)){
+						$count[$lang]++;
+					}else{
+						$count[$lang]=0;
+					}
             }
         }
         foreach ($l['plugins'] as $plug => $arr) {
+			  $arr=(array)$arr;
             foreach ($arr as $lang) {
-                $count[$lang]++;
+					if(array_key_exists($lang,$count)){
+						$count[$lang]++;
+					}else{
+						$count[$lang]=0;
+					}
             }
         }
 
